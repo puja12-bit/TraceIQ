@@ -1,0 +1,18 @@
+{
+  "id": "def-b2b-comp",
+  "applicationId": "app-nexaone",
+  "type": "defects",
+  "name": "Defect: Competitor matches B2B earlier",
+  "description": "Competitor pressure",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/defects/def-b2b-comp.json",
+  "content": "Competitors offer B2B at 6 months. We need to lower our threshold from 12 months to 6 months.",
+  "tags": [
+    "defect",
+    "b2b"
+  ],
+  "affects": [
+    "rule-b2b-tenure",
+    "code-b2b-eligibility"
+  ]
+}

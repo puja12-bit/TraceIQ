@@ -1,0 +1,19 @@
+{
+  "id": "code-payment-routing",
+  "applicationId": "app-nexaone",
+  "type": "code",
+  "name": "PaymentRouter.java",
+  "description": "Routing logic",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/code/code-payment-routing.json",
+  "content": "public String getRoutingKey(Client c, Invoice i) { if (c.getRoutingRule() == \"COMPANY_CODE_CURRENCY\") return i.cc + i.curr; ... }",
+  "tags": [
+    "java",
+    "payments"
+  ],
+  "dependsOn": [
+    "cfg-client-a",
+    "cfg-client-b",
+    "cfg-client-c"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "arch-db",
+  "applicationId": "app-nexaone",
+  "type": "architecture",
+  "name": "Database Architecture",
+  "description": "PostgreSQL",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/architecture/arch-db.json",
+  "content": "Main relational data in PostgreSQL 15. Read replicas used for Invoice History.",
+  "tags": [
+    "architecture",
+    "database"
+  ]
+}

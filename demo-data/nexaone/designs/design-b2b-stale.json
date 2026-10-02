@@ -1,0 +1,18 @@
+{
+  "id": "design-b2b-stale",
+  "applicationId": "app-nexaone",
+  "type": "designs",
+  "name": "B2B Flow Design (Outdated)",
+  "description": "Figma export from 3.1",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/designs/design-b2b-stale.json",
+  "content": "Shows B2B locked for everyone except marked legacy accounts.",
+  "tags": [
+    "design",
+    "stale"
+  ],
+  "contradicts": [
+    "req-b2b-001"
+  ],
+  "version": "3.1"
+}

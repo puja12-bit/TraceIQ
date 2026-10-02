@@ -1,0 +1,17 @@
+{
+  "id": "test-prod-vis",
+  "applicationId": "app-nexaone",
+  "type": "tests",
+  "name": "ProductCatalogComponent.spec.tsx",
+  "description": "Component test",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/tests/test-prod-vis.json",
+  "content": "it(\"hides B2B for 8 month telecom user\", () => { ... }); it(\"shows all for 13 month telecom user\", () => { ... });",
+  "tags": [
+    "test",
+    "react"
+  ],
+  "validates": [
+    "code-prod-catalog"
+  ]
+}

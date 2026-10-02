@@ -1,0 +1,14 @@
+{
+  "id": "cfg-notif",
+  "applicationId": "app-nexaone",
+  "type": "configuration",
+  "name": "Global Notification Config",
+  "description": "Toggle notifications",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/configuration/cfg-notif.json",
+  "content": "{ \"emailGateway\": \"SendGrid\", \"retryCount\": 3, \"defaultEnabled\": true }",
+  "tags": [
+    "config",
+    "notifications"
+  ]
+}

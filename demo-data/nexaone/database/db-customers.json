@@ -1,0 +1,14 @@
+{
+  "id": "db-customers",
+  "applicationId": "app-nexaone",
+  "type": "database",
+  "name": "Customers Table",
+  "description": "Schema",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/database/db-customers.json",
+  "content": "CREATE TABLE customers (id UUID, client_id UUID, state VARCHAR, email VARCHAR, tenure_months INT);",
+  "tags": [
+    "database",
+    "customers"
+  ]
+}

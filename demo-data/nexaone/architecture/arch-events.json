@@ -1,0 +1,18 @@
+{
+  "id": "arch-events",
+  "applicationId": "app-nexaone",
+  "type": "architecture",
+  "name": "Event Bus Architecture",
+  "description": "Kafka",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/architecture/arch-events.json",
+  "content": "Payment completions trigger Kafka events consumed by NotificationDispatcher.",
+  "tags": [
+    "architecture",
+    "kafka"
+  ],
+  "dependsOn": [
+    "code-notif-svc",
+    "code-receipt-svc"
+  ]
+}

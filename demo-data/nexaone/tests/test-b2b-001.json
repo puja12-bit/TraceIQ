@@ -1,0 +1,17 @@
+{
+  "id": "test-b2b-001",
+  "applicationId": "app-nexaone",
+  "type": "tests",
+  "name": "B2bEligibilityService.spec.ts",
+  "description": "Unit tests for B2B eligibility",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/tests/test-b2b-001.json",
+  "content": "it(\"denies access if tenure < 12\", () => { ... }); it(\"allows if config enabled and tenure >= 12\", () => { ... });",
+  "tags": [
+    "b2b",
+    "test"
+  ],
+  "validates": [
+    "code-b2b-eligibility"
+  ]
+}

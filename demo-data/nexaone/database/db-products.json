@@ -1,0 +1,14 @@
+{
+  "id": "db-products",
+  "applicationId": "app-nexaone",
+  "type": "database",
+  "name": "Products Table",
+  "description": "Schema for products",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/database/db-products.json",
+  "content": "CREATE TABLE products (id UUID, name VARCHAR, type VARCHAR); // rows: Fiber, Copper, Duct, Pole, B2B",
+  "tags": [
+    "database",
+    "sql"
+  ]
+}

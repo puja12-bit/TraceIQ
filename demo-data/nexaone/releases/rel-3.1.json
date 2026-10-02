@@ -1,0 +1,14 @@
+{
+  "id": "rel-3.1",
+  "applicationId": "app-nexaone",
+  "type": "releases",
+  "name": "Release 3.1 Notes",
+  "description": "Release 3.1 details",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/releases/rel-3.1.json",
+  "content": "B2B available only to existing customers.",
+  "tags": [
+    "release",
+    "3.1"
+  ]
+}

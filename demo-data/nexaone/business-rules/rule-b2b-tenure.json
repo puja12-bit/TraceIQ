@@ -1,0 +1,17 @@
+{
+  "id": "rule-b2b-tenure",
+  "applicationId": "app-nexaone",
+  "type": "business-rules",
+  "name": "B2B Tenure Rule",
+  "description": "Rule for B2B tenure",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/business-rules/rule-b2b-tenure.json",
+  "content": "Threshold for B2B eligibility is exactly 12 months from the customer onboarding date.",
+  "tags": [
+    "b2b",
+    "tenure"
+  ],
+  "implements": [
+    "req-b2b-001"
+  ]
+}

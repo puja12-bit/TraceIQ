@@ -1,0 +1,17 @@
+{
+  "id": "test-notif-elig",
+  "applicationId": "app-nexaone",
+  "type": "tests",
+  "name": "NotificationDispatcherTest.cs",
+  "description": "Tests notification dispatch",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/tests/test-notif-elig.json",
+  "content": "public void Test_NoEmail_When_Disputed() { ... }",
+  "tags": [
+    "test",
+    "notifications"
+  ],
+  "validates": [
+    "code-notif-svc"
+  ]
+}

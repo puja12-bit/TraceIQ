@@ -1,0 +1,17 @@
+{
+  "id": "test-receipt-split",
+  "applicationId": "app-nexaone",
+  "type": "tests",
+  "name": "ReceiptServiceTest.java",
+  "description": "Tests receipt generation",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/tests/test-receipt-split.json",
+  "content": "void testSplitAcrossCompanyCodes() { ... assert receipts.size() == 2; }",
+  "tags": [
+    "test",
+    "java"
+  ],
+  "validates": [
+    "code-receipt-svc"
+  ]
+}

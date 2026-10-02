@@ -1,0 +1,17 @@
+{
+  "id": "code-inv-svc",
+  "applicationId": "app-nexaone",
+  "type": "code",
+  "name": "InvoiceService.ts",
+  "description": "Invoice logic",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/code/code-inv-svc.json",
+  "content": "function getPayable(invoices) { return invoices.filter(i => i.state === \"OPEN\"); }",
+  "tags": [
+    "typescript",
+    "invoices"
+  ],
+  "dependsOn": [
+    "rule-inv-payable"
+  ]
+}

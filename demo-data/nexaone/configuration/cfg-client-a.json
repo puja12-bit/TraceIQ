@@ -1,0 +1,21 @@
+{
+  "id": "cfg-client-a",
+  "applicationId": "app-nexaone",
+  "type": "configuration",
+  "name": "Client A Configuration",
+  "description": "Config for Telecom Client A",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/configuration/cfg-client-a.json",
+  "content": "{ \"industry\": \"telecom\", \"b2bEnabled\": true, \"paymentRouting\": \"COMPANY_CODE_CURRENCY\", \"allowedPaymentMethods\": [\"CREDIT_CARD\", \"ACH\"] }",
+  "tags": [
+    "client-a",
+    "config",
+    "telecom"
+  ],
+  "clientId": "client-a",
+  "status": "active",
+  "owner": "Integration Lead",
+  "team": "Client Success",
+  "isBaseline": false,
+  "lastVerifiedAt": "2026-08-15T00:00:00Z"
+}

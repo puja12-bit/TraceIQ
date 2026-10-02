@@ -1,0 +1,17 @@
+{
+  "id": "test-hierarchy",
+  "applicationId": "app-nexaone",
+  "type": "tests",
+  "name": "AccountHierarchyTest.java",
+  "description": "Tests hierarchy allocation",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/tests/test-hierarchy.json",
+  "content": "void testParentPaysChildInvoices() { ... }",
+  "tags": [
+    "test",
+    "hierarchy"
+  ],
+  "validates": [
+    "rule-allocation"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "arch-frontend",
+  "applicationId": "app-nexaone",
+  "type": "architecture",
+  "name": "Frontend Architecture",
+  "description": "React + Vite",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/architecture/arch-frontend.json",
+  "content": "We use React 18 with Vite. State management via Redux Toolkit.",
+  "tags": [
+    "architecture",
+    "react"
+  ]
+}

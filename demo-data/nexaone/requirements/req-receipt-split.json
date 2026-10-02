@@ -1,0 +1,18 @@
+{
+  "id": "req-receipt-split",
+  "applicationId": "app-nexaone",
+  "type": "requirements",
+  "name": "Receipt Splitting",
+  "description": "Receipt logic",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/requirements/req-receipt-split.json",
+  "content": "One payment can cover multiple invoices. The system must split the payment into multiple receipts grouped by Company Code and Currency.",
+  "tags": [
+    "payments",
+    "receipts"
+  ],
+  "status": "active",
+  "owner": "Billing Arch",
+  "team": "Billing Squad",
+  "isBaseline": true
+}

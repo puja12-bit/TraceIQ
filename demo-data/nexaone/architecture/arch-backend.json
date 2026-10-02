@@ -1,0 +1,14 @@
+{
+  "id": "arch-backend",
+  "applicationId": "app-nexaone",
+  "type": "architecture",
+  "name": "Backend Architecture",
+  "description": "Microservices",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/architecture/arch-backend.json",
+  "content": "Java Spring Boot for Payments, Node.js for B2B and Invoices, C# for Notifications.",
+  "tags": [
+    "architecture",
+    "microservices"
+  ]
+}

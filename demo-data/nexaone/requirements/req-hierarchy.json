@@ -1,0 +1,14 @@
+{
+  "id": "req-hierarchy",
+  "applicationId": "app-nexaone",
+  "type": "requirements",
+  "name": "Account Hierarchy Allocation",
+  "description": "Parent/child accounts",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/requirements/req-hierarchy.json",
+  "content": "Payments can be made by a Parent Account and allocated across Invoices belonging to multiple Child Accounts. Allocation scope is the Account Hierarchy.",
+  "tags": [
+    "hierarchy",
+    "payments"
+  ]
+}

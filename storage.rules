@@ -1,0 +1,24 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    
+    // Helper Functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function getUserOrgId() {
+      // Use Firestore lookup from Storage rules (requires Firebase Storage rules v2)
+      return firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.organizationId;
+    }
+
+    function isUserInOrg(orgId) {
+      return isAuthenticated() && getUserOrgId() == orgId;
+    }
+
+    // Artifacts Path: organizations/{orgId}/applications/{appId}/{fileName}
+    match /organizations/{orgId}/applications/{appId}/{fileName} {
+      allow read, write: if isUserInOrg(orgId);
+    }
+  }
+}

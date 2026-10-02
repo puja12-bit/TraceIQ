@@ -1,0 +1,18 @@
+{
+  "id": "code-notif-svc",
+  "applicationId": "app-nexaone",
+  "type": "code",
+  "name": "NotificationDispatcher.cs",
+  "description": "C# Notification logic",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/code/code-notif-svc.json",
+  "content": "public void Dispatch(Customer c, Invoice i) { if (c.IsActive && i.State == \"OPEN\" && c.Client.NotifEnabled && IsValid(c.Email)) Send(...); }",
+  "tags": [
+    "csharp",
+    "notifications"
+  ],
+  "dependsOn": [
+    "rule-notif-elig",
+    "cfg-notif"
+  ]
+}

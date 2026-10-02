@@ -1,0 +1,17 @@
+{
+  "id": "rule-approval",
+  "applicationId": "app-nexaone",
+  "type": "business-rules",
+  "name": "Approval Workflow",
+  "description": "Onboarding approval",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/business-rules/rule-approval.json",
+  "content": "All new accounts require manual approval by an admin before they become ACTIVE.",
+  "tags": [
+    "onboarding",
+    "approval"
+  ],
+  "implements": [
+    "req-onboarding"
+  ]
+}

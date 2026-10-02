@@ -1,0 +1,18 @@
+{
+  "id": "req-pay-methods",
+  "applicationId": "app-nexaone",
+  "type": "requirements",
+  "name": "Payment Methods",
+  "description": "Allowed methods",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/requirements/req-pay-methods.json",
+  "content": "System supports Credit Card, Debit Card, and ACH. Availability is driven by Client Configuration.",
+  "tags": [
+    "payments",
+    "methods"
+  ],
+  "status": "active",
+  "owner": "Payments PM",
+  "team": "Payments Squad",
+  "isBaseline": true
+}

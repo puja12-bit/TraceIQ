@@ -1,0 +1,13 @@
+{
+  "id": "req-onboarding",
+  "applicationId": "app-nexaone",
+  "type": "requirements",
+  "name": "Customer Onboarding",
+  "description": "Signup flow",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/requirements/req-onboarding.json",
+  "content": "Customers register via an invite link. Collect Company Name, Tax ID, Primary Contact.",
+  "tags": [
+    "onboarding"
+  ]
+}

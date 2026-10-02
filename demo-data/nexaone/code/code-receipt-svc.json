@@ -1,0 +1,17 @@
+{
+  "id": "code-receipt-svc",
+  "applicationId": "app-nexaone",
+  "type": "code",
+  "name": "ReceiptService.java",
+  "description": "Splits receipts",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/code/code-receipt-svc.json",
+  "content": "public List<Receipt> split(Payment p) { return p.getAllocations().stream().collect(groupingBy(a -> a.getCompanyCode() + \"_\" + a.getCurrency())).... }",
+  "tags": [
+    "java",
+    "payments"
+  ],
+  "dependsOn": [
+    "rule-allocation"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "req-inv-states",
+  "applicationId": "app-nexaone",
+  "type": "requirements",
+  "name": "Invoice States",
+  "description": "State machine for invoices",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/requirements/req-inv-states.json",
+  "content": "OPEN: visible & payable. PAID: visible in history, not payable. CANCELLED: hidden from normal payment, not payable. DISPUTED: visible, payment disabled.",
+  "tags": [
+    "invoices",
+    "states"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "cfg-client-c",
+  "applicationId": "app-nexaone",
+  "type": "configuration",
+  "name": "Client C Configuration",
+  "description": "Config for Medical Client C",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/configuration/cfg-client-c.json",
+  "content": "{ \"industry\": \"medical\", \"b2bEnabled\": false, \"paymentRouting\": \"COMPANY_CODE_CURRENCY_TYPE\", \"allowedPaymentMethods\": [\"ACH\"] }",
+  "tags": [
+    "client-c",
+    "config",
+    "medical"
+  ],
+  "clientId": "client-c",
+  "status": "active",
+  "owner": "Integration Specialist",
+  "team": "Client Success",
+  "isBaseline": false
+}

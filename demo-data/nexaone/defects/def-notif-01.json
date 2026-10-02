@@ -1,0 +1,20 @@
+{
+  "id": "def-notif-01",
+  "applicationId": "app-nexaone",
+  "type": "defects",
+  "name": "Defect: Spamming Disputed Invoices",
+  "description": "Emails sent wrongly",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/defects/def-notif-01.json",
+  "content": "Customers received payment reminders for DISPUTED invoices. Rule was ignored.",
+  "tags": [
+    "defect",
+    "notifications"
+  ],
+  "affects": [
+    "code-notif-svc"
+  ],
+  "contradicts": [
+    "rule-notif-elig"
+  ]
+}

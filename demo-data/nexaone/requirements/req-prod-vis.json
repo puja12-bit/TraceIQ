@@ -1,0 +1,14 @@
+{
+  "id": "req-prod-vis",
+  "applicationId": "app-nexaone",
+  "type": "requirements",
+  "name": "Product Visibility",
+  "description": "Catalog rules",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/requirements/req-prod-vis.json",
+  "content": "All users can see Fiber, Copper, Duct, and Pole. B2B Services are only visible if the user is B2B eligible.",
+  "tags": [
+    "products",
+    "visibility"
+  ]
+}

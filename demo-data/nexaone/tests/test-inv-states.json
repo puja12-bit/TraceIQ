@@ -1,0 +1,17 @@
+{
+  "id": "test-inv-states",
+  "applicationId": "app-nexaone",
+  "type": "tests",
+  "name": "InvoiceService.spec.ts",
+  "description": "Unit tests for invoice states",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/tests/test-inv-states.json",
+  "content": "it(\"excludes DISPUTED from payable\", () => { ... }); it(\"includes OPEN\", () => { ... });",
+  "tags": [
+    "test",
+    "invoices"
+  ],
+  "validates": [
+    "code-inv-svc"
+  ]
+}

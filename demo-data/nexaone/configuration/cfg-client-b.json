@@ -1,0 +1,20 @@
+{
+  "id": "cfg-client-b",
+  "applicationId": "app-nexaone",
+  "type": "configuration",
+  "name": "Client B Configuration",
+  "description": "Config for Library Client B",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/configuration/cfg-client-b.json",
+  "content": "{ \"industry\": \"library\", \"b2bEnabled\": false, \"paymentRouting\": \"ACCOUNT_CURRENCY\", \"allowedPaymentMethods\": [\"CREDIT_CARD\"] }",
+  "tags": [
+    "client-b",
+    "config",
+    "library"
+  ],
+  "clientId": "client-b",
+  "status": "active",
+  "owner": "Integration Specialist",
+  "team": "Client Success",
+  "isBaseline": false
+}

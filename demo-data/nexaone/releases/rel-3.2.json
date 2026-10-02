@@ -1,0 +1,14 @@
+{
+  "id": "rel-3.2",
+  "applicationId": "app-nexaone",
+  "type": "releases",
+  "name": "Release 3.2 Notes",
+  "description": "Release 3.2 details",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/releases/rel-3.2.json",
+  "content": "B2B expanded to: existing customer OR customer with >12 months tenure.",
+  "tags": [
+    "release",
+    "3.2"
+  ]
+}

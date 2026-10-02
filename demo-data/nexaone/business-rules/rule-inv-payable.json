@@ -1,0 +1,17 @@
+{
+  "id": "rule-inv-payable",
+  "applicationId": "app-nexaone",
+  "type": "business-rules",
+  "name": "Payable Invoices Rule",
+  "description": "Logic for payability",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/business-rules/rule-inv-payable.json",
+  "content": "An invoice can be selected for payment ONLY if state == OPEN.",
+  "tags": [
+    "invoices",
+    "rules"
+  ],
+  "implements": [
+    "req-inv-states"
+  ]
+}

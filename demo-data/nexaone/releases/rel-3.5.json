@@ -1,0 +1,18 @@
+{
+  "id": "rel-3.5",
+  "applicationId": "app-nexaone",
+  "type": "releases",
+  "name": "Release 3.5 Notes",
+  "description": "Latest release",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/releases/rel-3.5.json",
+  "content": "Added mandatory Tax ID to onboarding. Fixed notification spam defect.",
+  "tags": [
+    "release",
+    "3.5"
+  ],
+  "relatedArtifactIds": [
+    "def-notif-01",
+    "dec-tax-id"
+  ]
+}

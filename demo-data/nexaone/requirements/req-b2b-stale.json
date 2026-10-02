@@ -1,0 +1,22 @@
+{
+  "id": "req-b2b-stale",
+  "applicationId": "app-nexaone",
+  "type": "requirements",
+  "name": "B2B Original Eligibility (Stale)",
+  "description": "Legacy requirement from Release 3.1",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/requirements/req-b2b-stale.json",
+  "content": "B2B services are only available to existing legacy customers who were onboarded before 2023.",
+  "tags": [
+    "b2b",
+    "legacy"
+  ],
+  "contradicts": [
+    "req-b2b-001"
+  ],
+  "version": "3.1",
+  "status": "deprecated",
+  "owner": "Legacy PM",
+  "team": "Core Platform",
+  "isBaseline": true
+}

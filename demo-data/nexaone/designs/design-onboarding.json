@@ -1,0 +1,17 @@
+{
+  "id": "design-onboarding",
+  "applicationId": "app-nexaone",
+  "type": "designs",
+  "name": "Onboarding Form",
+  "description": "Figma",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/designs/design-onboarding.json",
+  "content": "Shows 3-step wizard: Basic Info, Tax Details, Review.",
+  "tags": [
+    "design",
+    "onboarding"
+  ],
+  "implements": [
+    "req-onboarding"
+  ]
+}

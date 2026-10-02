@@ -1,0 +1,17 @@
+{
+  "id": "def-receipt-01",
+  "applicationId": "app-nexaone",
+  "type": "defects",
+  "name": "Defect: Missing Receipt",
+  "description": "Receipt not generated",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/defects/def-receipt-01.json",
+  "content": "When payment covers 3 invoices, but one has an empty company code, it crashes.",
+  "tags": [
+    "defect",
+    "payments"
+  ],
+  "affects": [
+    "code-receipt-svc"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id": "design-inv-ui",
+  "applicationId": "app-nexaone",
+  "type": "designs",
+  "name": "Invoice List UI",
+  "description": "Figma design",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/designs/design-inv-ui.json",
+  "content": "Shows DISPUTED invoices with a greyed out checkbox. CANCELLED invoices are under the \"Archived\" tab.",
+  "tags": [
+    "design",
+    "invoices"
+  ],
+  "implements": [
+    "req-inv-states"
+  ]
+}

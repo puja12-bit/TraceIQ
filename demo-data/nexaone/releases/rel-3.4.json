@@ -1,0 +1,14 @@
+{
+  "id": "rel-3.4",
+  "applicationId": "app-nexaone",
+  "type": "releases",
+  "name": "Release 3.4 Notes",
+  "description": "Release 3.4 details",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/releases/rel-3.4.json",
+  "content": "Client-specific B2B configuration introduced. Telecom allowed, others disabled.",
+  "tags": [
+    "release",
+    "3.4"
+  ]
+}

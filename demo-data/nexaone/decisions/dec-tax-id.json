@@ -1,0 +1,17 @@
+{
+  "id": "dec-tax-id",
+  "applicationId": "app-nexaone",
+  "type": "decisions",
+  "name": "Decision: Mandatory Tax ID",
+  "description": "Compliance",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/decisions/dec-tax-id.json",
+  "content": "Tax ID made mandatory during onboarding to comply with EU B2B invoicing laws.",
+  "tags": [
+    "compliance",
+    "decision"
+  ],
+  "affects": [
+    "req-onboarding"
+  ]
+}

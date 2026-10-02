@@ -1,0 +1,18 @@
+{
+  "id": "code-prod-catalog",
+  "applicationId": "app-nexaone",
+  "type": "code",
+  "name": "ProductCatalogComponent.tsx",
+  "description": "React component for catalog",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/code/code-prod-catalog.json",
+  "content": "function Catalog({customer}) { const prods = getAll(); const b2bEligible = b2bSvc.canAccessB2B(customer); return prods.filter(p => p.type !== \"B2B\" || b2bEligible).map(...); }",
+  "tags": [
+    "react",
+    "products"
+  ],
+  "dependsOn": [
+    "code-b2b-eligibility",
+    "req-prod-vis"
+  ]
+}

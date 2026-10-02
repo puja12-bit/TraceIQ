@@ -1,0 +1,18 @@
+{
+  "id": "rule-allocation",
+  "applicationId": "app-nexaone",
+  "type": "business-rules",
+  "name": "Payment Allocation Rule",
+  "description": "Allocation vs Grouping",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/business-rules/rule-allocation.json",
+  "content": "Allocation applies across the Account Hierarchy. Receipt generation groups the allocated amounts strictly by Company Code + Currency.",
+  "tags": [
+    "payments",
+    "rules"
+  ],
+  "implements": [
+    "req-hierarchy",
+    "req-receipt-split"
+  ]
+}

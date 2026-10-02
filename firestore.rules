@@ -1,0 +1,81 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper Functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function getUserData() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
+    }
+    
+    function isUserInOrg(orgId) {
+      return isAuthenticated() && getUserData().organizationId == orgId;
+    }
+    
+    function canAccessApplication(appId) {
+      let app = get(/databases/$(database)/documents/applications/$(appId)).data;
+      return isUserInOrg(app.organizationId);
+    }
+
+    // Users: Can read/write their own document
+    match /users/{userId} {
+      allow read, write: if isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // Organizations: Accessible if the user belongs to it
+    match /organizations/{orgId} {
+      allow read: if isUserInOrg(orgId);
+      allow write: if isUserInOrg(orgId) && getUserData().role == 'admin';
+    }
+
+    // Clients: Accessible if the user belongs to the client's organization
+    match /clients/{clientId} {
+      allow read: if isUserInOrg(resource.data.organizationId);
+      allow write: if isUserInOrg(request.resource.data.organizationId);
+    }
+
+    // Applications: Accessible if the user belongs to the application's organization
+    match /applications/{appId} {
+      allow read: if isUserInOrg(resource.data.organizationId);
+      allow write: if isUserInOrg(request.resource.data.organizationId);
+    }
+
+    // Features: Accessible if the user has access to the parent application
+    match /features/{featureId} {
+      allow read: if canAccessApplication(resource.data.applicationId);
+      allow write: if canAccessApplication(request.resource.data.applicationId);
+    }
+
+    // Knowledge Items: Accessible if user has access to parent app
+    match /knowledge_items/{itemId} {
+      allow read: if canAccessApplication(resource.data.applicationId);
+      allow write: if canAccessApplication(request.resource.data.applicationId);
+    }
+
+    // Relationships: Accessible if user has access to parent app
+    match /relationships/{relId} {
+      allow read: if canAccessApplication(resource.data.applicationId);
+      allow write: if canAccessApplication(request.resource.data.applicationId);
+    }
+
+    // Artifacts: Accessible if user has access to parent app
+    match /artifacts/{artifactId} {
+      allow read: if canAccessApplication(resource.data.applicationId);
+      allow write: if canAccessApplication(request.resource.data.applicationId);
+    }
+    
+    match /knowledge_chunks/{chunkId} {
+      allow read: if canAccessApplication(resource.data.applicationId);
+      allow write: if canAccessApplication(request.resource.data.applicationId);
+    }
+
+    // Conversations: Accessible if user has access to parent app and owns the conversation
+    match /conversations/{conversationId} {
+      allow read: if canAccessApplication(resource.data.applicationId) && resource.data.userId == request.auth.uid;
+      allow write: if canAccessApplication(request.resource.data.applicationId) && request.resource.data.userId == request.auth.uid;
+    }
+  }
+}

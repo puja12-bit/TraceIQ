@@ -1,0 +1,14 @@
+{
+  "id": "req-notif-elig",
+  "applicationId": "app-nexaone",
+  "type": "requirements",
+  "name": "Notification Eligibility",
+  "description": "When to send emails",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/requirements/req-notif-elig.json",
+  "content": "Send notification IF: customer is active AND invoice is eligible (OPEN) AND client notification is enabled AND recipient is valid.",
+  "tags": [
+    "notifications",
+    "email"
+  ]
+}

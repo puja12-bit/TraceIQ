@@ -1,0 +1,18 @@
+{
+  "id": "code-b2b-eligibility",
+  "applicationId": "app-nexaone",
+  "type": "code",
+  "name": "B2bEligibilityService.ts",
+  "description": "Service checking B2B access",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/code/code-b2b-eligibility.json",
+  "content": "class B2bEligibilityService { canAccessB2B(customer) { const config = getClientConfig(customer.clientId); if (!config.b2bEnabled) return false; return customer.tenureMonths >= 12; } }",
+  "tags": [
+    "b2b",
+    "typescript"
+  ],
+  "dependsOn": [
+    "cfg-client-a",
+    "rule-b2b-tenure"
+  ]
+}

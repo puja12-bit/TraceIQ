@@ -1,0 +1,14 @@
+{
+  "id": "db-invoices",
+  "applicationId": "app-nexaone",
+  "type": "database",
+  "name": "Invoices Schema",
+  "description": "SQL schema for invoices",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/database/db-invoices.json",
+  "content": "CREATE TABLE invoices (id UUID, account_id UUID, state VARCHAR CHECK(state IN(\"OPEN\",\"PAID\",\"CANCELLED\",\"DISPUTED\")), amount DECIMAL);",
+  "tags": [
+    "database",
+    "invoices"
+  ]
+}

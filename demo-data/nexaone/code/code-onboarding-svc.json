@@ -1,0 +1,17 @@
+{
+  "id": "code-onboarding-svc",
+  "applicationId": "app-nexaone",
+  "type": "code",
+  "name": "OnboardingService.ts",
+  "description": "Handles signup",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/code/code-onboarding-svc.json",
+  "content": "function register(data) { const user = db.insert(data); user.state = \"PENDING_APPROVAL\"; return user; }",
+  "tags": [
+    "typescript",
+    "onboarding"
+  ],
+  "dependsOn": [
+    "rule-approval"
+  ]
+}

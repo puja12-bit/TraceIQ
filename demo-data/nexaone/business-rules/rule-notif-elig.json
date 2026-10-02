@@ -1,0 +1,17 @@
+{
+  "id": "rule-notif-elig",
+  "applicationId": "app-nexaone",
+  "type": "business-rules",
+  "name": "Notification Rule",
+  "description": "Notification conditions",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/business-rules/rule-notif-elig.json",
+  "content": "All 4 conditions must be met simultaneously. If recipient email bounces, recipient becomes invalid.",
+  "tags": [
+    "notifications",
+    "rules"
+  ],
+  "implements": [
+    "req-notif-elig"
+  ]
+}

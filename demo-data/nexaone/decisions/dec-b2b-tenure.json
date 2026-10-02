@@ -1,0 +1,14 @@
+{
+  "id": "dec-b2b-tenure",
+  "applicationId": "app-nexaone",
+  "type": "decisions",
+  "name": "Decision: 12-Month Tenure",
+  "description": "Why 12 months?",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/decisions/dec-b2b-tenure.json",
+  "content": "We chose 12 months for B2B eligibility to offset the high 6-month churn rates in telecom.",
+  "tags": [
+    "b2b",
+    "decision"
+  ]
+}

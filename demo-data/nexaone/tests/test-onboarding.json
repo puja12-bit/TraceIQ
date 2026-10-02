@@ -1,0 +1,17 @@
+{
+  "id": "test-onboarding",
+  "applicationId": "app-nexaone",
+  "type": "tests",
+  "name": "OnboardingService.spec.ts",
+  "description": "Tests onboarding",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/tests/test-onboarding.json",
+  "content": "it(\"sets state to PENDING_APPROVAL\", () => { ... });",
+  "tags": [
+    "test",
+    "onboarding"
+  ],
+  "validates": [
+    "code-onboarding-svc"
+  ]
+}

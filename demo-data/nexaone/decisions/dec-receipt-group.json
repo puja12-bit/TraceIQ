@@ -1,0 +1,14 @@
+{
+  "id": "dec-receipt-group",
+  "applicationId": "app-nexaone",
+  "type": "decisions",
+  "name": "Decision: Receipt Grouping",
+  "description": "Why CC+Currency?",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/decisions/dec-receipt-group.json",
+  "content": "Group by Company Code + Currency to align with ERP ledger batching requirements.",
+  "tags": [
+    "payments",
+    "erp"
+  ]
+}

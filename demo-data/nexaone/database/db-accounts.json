@@ -1,0 +1,14 @@
+{
+  "id": "db-accounts",
+  "applicationId": "app-nexaone",
+  "type": "database",
+  "name": "Accounts Schema",
+  "description": "Hierarchy tables",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/database/db-accounts.json",
+  "content": "CREATE TABLE accounts (id UUID, parent_id UUID NULL, name VARCHAR);",
+  "tags": [
+    "database",
+    "accounts"
+  ]
+}

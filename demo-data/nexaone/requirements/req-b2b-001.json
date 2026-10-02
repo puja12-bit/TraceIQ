@@ -1,0 +1,22 @@
+{
+  "id": "req-b2b-001",
+  "applicationId": "app-nexaone",
+  "type": "requirements",
+  "name": "B2B Services Eligibility",
+  "description": "Defines when customers can see B2B services.",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/requirements/req-b2b-001.json",
+  "content": "Customers can see B2B services if they are associated with a client that enables B2B and they have reached the required tenure threshold (default 12 months).",
+  "tags": [
+    "b2b",
+    "eligibility"
+  ],
+  "supersedes": [
+    "req-b2b-stale"
+  ],
+  "status": "active",
+  "owner": "Product Manager",
+  "team": "Core Platform",
+  "isBaseline": true,
+  "lastVerifiedAt": "2026-09-01T00:00:00Z"
+}

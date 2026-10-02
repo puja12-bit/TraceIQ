@@ -1,0 +1,25 @@
+{
+  "id": "req-b2b-6mo",
+  "applicationId": "app-nexaone",
+  "type": "requirements",
+  "name": "Proposed: 6-Month B2B Eligibility",
+  "description": "Proposed threshold reduction",
+  "source": "TraceIQ Synthetic",
+  "path": "demo-data/nexaone/requirements/req-b2b-6mo.json",
+  "content": "Reduce the B2B tenure requirement to 6 months to match competitor offerings.",
+  "tags": [
+    "b2b",
+    "eligibility",
+    "proposed"
+  ],
+  "contradicts": [
+    "req-b2b-001"
+  ],
+  "status": "proposed",
+  "owner": "Growth Product Manager",
+  "team": "Growth Team",
+  "isBaseline": true,
+  "sourceArtifactIds": [
+    "def-b2b-comp"
+  ]
+}
