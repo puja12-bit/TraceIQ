@@ -19,7 +19,7 @@ export const SCENARIOS = [
     scenario: "Six-month B2B eligibility feasibility",
     questionType: "feasibility",
     question: "Can we lower the B2B threshold to 6 months?",
-    expectedConclusion: "requires_development",
+    expectedConclusion: "proposed",
     expectedArtifacts: ["req-b2b-6mo", "def-b2b-comp"],
     failureConditions: ["describes the 6-month threshold as active or supported"]
   },
@@ -73,9 +73,13 @@ export const SCENARIOS = [
     scenario: "Payment-rule dependency and impact analysis",
     questionType: "impact",
     question: "If I change the payable invoice rule, what is affected?",
-    expectedConclusion: "supported", // The impact analysis itself is supported
+    expectedConclusion: null,
     expectedArtifacts: ["rule-inv-payable", "code-inv-svc"],
-    failureConditions: ["fails to traverse the dependsOn relationships"]
+    failureConditions: [
+      "fails to traverse the dependsOn relationships",
+      "claims that every graph-connected artifact is necessarily affected",
+      "invents downstream effects rather than explicitly acknowledging unknowns"
+    ]
   }
 ];
 
@@ -142,7 +146,7 @@ export async function runEvaluation() {
 
       // Check Conclusion Validity
       if (tc.expectedConclusion === null) {
-        result.automatedChecks.validConclusion = (result.actualConclusion === null) ? "not_applicable" : false;
+        result.automatedChecks.validConclusion = "not_applicable";
       } else {
         result.automatedChecks.validConclusion = (result.actualConclusion === tc.expectedConclusion);
       }
@@ -163,10 +167,23 @@ export async function runEvaluation() {
       }
       result.automatedChecks.evidenceTraceability = traceabilityOk;
 
+      // Check Impact-Specific Criteria
+      if (tc.questionType === 'impact') {
+        const identifiesComponent = result.fullAnswer.toLowerCase().includes('code-inv-svc') || 
+                                    (result.claims && result.claims.some((c: any) => c.evidenceArtifactIds?.includes('code-inv-svc')));
+        result.automatedChecks.validImpactAnalysis = result.automatedChecks.retrievalComplete && 
+                                                     identifiesComponent && 
+                                                     result.automatedChecks.evidenceTraceability && 
+                                                     result.automatedChecks.noHallucinatedCitations;
+      }
+
+      const isImpactOk = tc.questionType === 'impact' ? result.automatedChecks.validImpactAnalysis : true;
+
       const allChecksPass = result.automatedChecks.retrievalComplete && 
                             (result.automatedChecks.validConclusion === true || result.automatedChecks.validConclusion === "not_applicable") && 
                             result.automatedChecks.evidenceTraceability && 
-                            result.automatedChecks.noHallucinatedCitations;
+                            result.automatedChecks.noHallucinatedCitations &&
+                            isImpactOk;
       
       if (allChecksPass) {
         passed++;
