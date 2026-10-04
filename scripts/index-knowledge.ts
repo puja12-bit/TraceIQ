@@ -29,7 +29,9 @@ async function index() {
   console.log("Fetching artifacts...");
   const artifactsSnap = await getDocs(query(collection(db, "artifacts"), where("applicationId", "==", "app-nexaone")));
   
-  let count = 0;
+  let successCount = 0;
+  let failCount = 0;
+  
   for (const aDoc of artifactsSnap.docs) {
     const artifact = aDoc.data();
     
@@ -57,17 +59,22 @@ async function index() {
     };
 
     console.log(`Embedding ${artifact.id}...`);
-    const vector = await embed(chunkContent);
-    
-    // Store in knowledge_chunks
-    await setDoc(doc(db, "knowledge_chunks", chunk.id), {
-      ...chunk,
-      embedding: vector // Standard array storage for local cosine similarity
-    });
-    count++;
+    try {
+      const vector = await embed(chunkContent);
+      
+      // Store in knowledge_chunks
+      await setDoc(doc(db, "knowledge_chunks", chunk.id), {
+        ...chunk,
+        embedding: vector
+      }, { merge: true });
+      successCount++;
+    } catch (e: any) {
+      console.error(`Failed to embed ${artifact.id}: ${e.message}`);
+      failCount++;
+    }
   }
   
-  console.log(`Successfully indexed ${count} chunks.`);
+  console.log(`\nIndexing Complete. Success: ${successCount}, Failed: ${failCount}`);
   process.exit(0);
 }
 

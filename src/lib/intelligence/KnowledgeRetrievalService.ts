@@ -10,7 +10,9 @@ function cosineSimilarity(a: number[], b: number[]) {
     normA += a[i] * a[i];
     normB += b[i] * b[i];
   }
-  return dotProduct / (Math.sqrt(normA) * Math.sqrt(normB));
+  if (normA === 0 || normB === 0) return 0;
+  const sim = dotProduct / (Math.sqrt(normA) * Math.sqrt(normB));
+  return Number.isFinite(sim) ? sim : 0;
 }
 
 import { getEmbeddings } from '../../../scripts/vertex-embed.ts';
@@ -59,6 +61,10 @@ export class KnowledgeRetrievalService {
     const artifactsMap = new Map();
     const paths: any[] = [];
     
+    // Impact queries need 2-hop traversal to follow req -> rule -> code
+    const isImpactAnalysis = /impact|affect|change|dependency/i.test(question);
+    const maxDepth = isImpactAnalysis ? 2 : 1;
+    
     async function fetchArtifact(id: string, depth: number = 0, fromId?: string, relType?: string) {
       if (artifactsMap.has(id)) return;
       const docRef = KnowledgeRetrievalService.getDb().collection("artifacts").doc(id);
@@ -78,14 +84,32 @@ export class KnowledgeRetrievalService {
         paths.push({ fromArtifactId: fromId, relationship: relType, toArtifactId: id });
       }
 
-      // Expand 1 hop
-      if (depth < 1) {
+      if (depth < maxDepth) {
+        // 1. Outward expansion
         const relFields = ['relatedArtifactIds', 'implements', 'dependsOn', 'supersedes', 'contradicts', 'validates', 'affects'];
         for (const field of relFields) {
           if (artifact[field] && Array.isArray(artifact[field])) {
             for (const relatedId of artifact[field]) {
               await fetchArtifact(relatedId, depth + 1, id, field);
             }
+          }
+        }
+        
+        // 2. Inward (reverse) expansion
+        const reverseFields = ['dependsOn', 'implements'];
+        for (const field of reverseFields) {
+          try {
+            const revSnap = await KnowledgeRetrievalService.getDb().collection("artifacts")
+              .where("applicationId", "==", applicationId)
+              .where(field, "array-contains", id)
+              .get();
+              
+            for (const rDoc of revSnap.docs) {
+              await fetchArtifact(rDoc.id, depth + 1, id, `referenced_by_${field}`);
+            }
+          } catch (e: any) {
+             console.error(`Reverse lookup failed for field ${field}: ${e.message}`);
+             throw e; // Do not silently skip on failure
           }
         }
       }

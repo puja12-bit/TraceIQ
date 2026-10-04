@@ -4,59 +4,65 @@ import * as path from 'path';
 import { KnowledgeRetrievalService } from '../src/lib/intelligence/KnowledgeRetrievalService.ts';
 import { TraceIQReasoningService } from '../src/lib/intelligence/TraceIQReasoningService.ts';
 
-// 1. Fixed Evaluation Dataset
-const SCENARIOS = [
+export const SCENARIOS = [
   {
     id: "eval-001",
     scenario: "General application understanding",
+    questionType: "explanation",
     question: "How does the React catalog component work?",
-    expectedConclusion: undefined,
+    expectedConclusion: null,
     expectedArtifacts: ["code-prod-catalog"],
     failureConditions: ["forces a capabilityConclusion when it shouldn't"]
   },
   {
     id: "eval-002",
     scenario: "Six-month B2B eligibility feasibility",
+    questionType: "feasibility",
     question: "Can we lower the B2B threshold to 6 months?",
-    expectedConclusion: "proposed",
+    expectedConclusion: "requires_development",
     expectedArtifacts: ["req-b2b-6mo", "def-b2b-comp"],
     failureConditions: ["describes the 6-month threshold as active or supported"]
   },
   {
     id: "eval-003",
     scenario: "Cross-client payment-routing comparison",
+    questionType: "comparison",
     question: "Compare payment routing for Client B and Client C.",
-    expectedConclusion: "configurable", // or supported depending on model nuance, but let's check retrieval mostly
+    expectedConclusion: null,
     expectedArtifacts: ["cfg-client-b", "cfg-client-c"],
     failureConditions: ["generalizes one client's routing to the other", "fails to retrieve both clients"]
   },
   {
     id: "eval-004",
     scenario: "Historical B2B rule",
+    questionType: "historical",
     question: "What was the B2B threshold in release 3.1?",
-    expectedConclusion: "unknown", // Historical, not currently supported baseline
+    expectedConclusion: null,
     expectedArtifacts: ["req-b2b-stale", "rel-3.1"],
     failureConditions: ["treats the stale 3.1 rule as the current active behavior"]
   },
   {
     id: "eval-005",
     scenario: "Missing ownership information",
+    questionType: "ownership",
     question: "Who owns the onboarding approval workflow?",
-    expectedConclusion: "unknown",
+    expectedConclusion: null,
     expectedArtifacts: ["rule-approval"],
     failureConditions: ["invents an owner or team that doesn't exist in metadata"]
   },
   {
     id: "eval-006",
     scenario: "Version-specific capability validation",
+    questionType: "historical",
     question: "What changed in release 3.5?",
-    expectedConclusion: "supported",
+    expectedConclusion: null,
     expectedArtifacts: ["rel-3.5"],
     failureConditions: ["cites changes from other releases"]
   },
   {
     id: "eval-007",
     scenario: "Insufficient evidence",
+    questionType: "feasibility",
     question: "Does the system support quantum cryptography?",
     expectedConclusion: "unknown",
     expectedArtifacts: [],
@@ -65,6 +71,7 @@ const SCENARIOS = [
   {
     id: "eval-008",
     scenario: "Payment-rule dependency and impact analysis",
+    questionType: "impact",
     question: "If I change the payable invoice rule, what is affected?",
     expectedConclusion: "supported", // The impact analysis itself is supported
     expectedArtifacts: ["rule-inv-payable", "code-inv-svc"],
@@ -72,7 +79,7 @@ const SCENARIOS = [
   }
 ];
 
-async function runEvaluation() {
+export async function runEvaluation() {
   console.log("--- Starting Live Intelligence Evaluation ---");
   
   if (!process.env.GOOGLE_APPLICATION_CREDENTIALS && !process.env.VERTEX_LOCATION) {
@@ -92,6 +99,7 @@ async function runEvaluation() {
   const report: any[] = [];
   let passed = 0;
   let failed = 0;
+  let capabilityConclusionsValidated = 0;
 
   for (const tc of SCENARIOS) {
     console.log(`\nEvaluating [${tc.id}]: ${tc.scenario}`);
@@ -128,13 +136,13 @@ async function runEvaluation() {
 
       // 2. Live Reasoning
       const reasoning = await TraceIQReasoningService.reason(tc.question, context);
-      result.actualConclusion = reasoning.capabilityConclusion || undefined;
+      result.actualConclusion = reasoning.capabilityConclusion || null;
       result.fullAnswer = reasoning.answer;
       result.claims = reasoning.claims;
 
       // Check Conclusion Validity
-      if (tc.expectedConclusion === undefined) {
-        result.automatedChecks.validConclusion = (result.actualConclusion === undefined);
+      if (tc.expectedConclusion === null) {
+        result.automatedChecks.validConclusion = (result.actualConclusion === null) ? "not_applicable" : false;
       } else {
         result.automatedChecks.validConclusion = (result.actualConclusion === tc.expectedConclusion);
       }
@@ -156,11 +164,18 @@ async function runEvaluation() {
       result.automatedChecks.evidenceTraceability = traceabilityOk;
 
       const allChecksPass = result.automatedChecks.retrievalComplete && 
-                            result.automatedChecks.validConclusion && 
+                            (result.automatedChecks.validConclusion === true || result.automatedChecks.validConclusion === "not_applicable") && 
                             result.automatedChecks.evidenceTraceability && 
                             result.automatedChecks.noHallucinatedCitations;
       
-      if (allChecksPass) passed++; else failed++;
+      if (allChecksPass) {
+        passed++;
+        if (tc.expectedConclusion !== null) {
+          capabilityConclusionsValidated++;
+        }
+      } else {
+        failed++;
+      }
 
     } catch (e: any) {
       console.error(`[ERROR] ${tc.id} failed during execution: ${e.message}`);
@@ -178,8 +193,11 @@ async function runEvaluation() {
   fs.writeFileSync(reportPath, JSON.stringify(report, null, 2));
 
   console.log(`\nEvaluation complete. Results written to ${reportPath}`);
-  console.log(`Automated Checks: ${passed} fully passed, ${failed} failed or errored.`);
+  console.log(`Automated Checks: ${passed} scenarios passed, ${failed} failed or errored. Capability conclusions validated: ${capabilityConclusionsValidated}`);
   console.log("NOTE: All responses require human review to validate qualitative constraints (e.g. tone, hallucinated rules).");
 }
 
-runEvaluation().catch(console.error);
+const isMain = typeof process !== 'undefined' && process.argv[1] && process.argv[1].endsWith('evaluate-intelligence.ts');
+if (isMain) {
+  runEvaluation().catch(console.error);
+}
